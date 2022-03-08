@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+     <title>All Students</title>
+{% endblock %}
+
+{% block content %}
+
+        <table class="table table-dark">
+            <tr>
+                <th>Student ID</th>
+                <th>Student Name</th>
+
+                <th>Student City</th>
+
+                <th>Student Marks</th>
+                
+
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+            {% for stu in object_list %}
+            <tr>
+                <td>{{stu.id}}</td>
+                <td>{{stu.name}}</td>
+                <td>{{stu.city}}</td>
+                <td>{{stu.marks}}</td>
+               
+                <td>
+                    <a href="{% url 'stu_update' stu.id %}">
+                        <button class="btn btn-warning">
+                        update
+                        </button>
+                    </a>
+                </td>
+                <td><a href = "{% url 'stu_delete' stu.id %}"><button class="btn btn-danger">Delete</button></a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+
+{% endblock %}
